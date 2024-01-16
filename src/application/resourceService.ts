@@ -31,7 +31,6 @@ export async function ProcessResourceType(
     await Promise.all(promises);
   }
 
-  console.log(resultsArray);
   // Write each object with a comma after it in the file
   AppendToFile(
     `${downloadDir}/${resourceType}.json`,
