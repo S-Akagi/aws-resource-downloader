@@ -36,6 +36,6 @@ export default async function RunMainScript() {
   // Split the resource types into batches of size maxParallel
   for (let i = 0; i < resourceTypes.length; i += maxParallel) {
     const batch = resourceTypes.slice(i, i + maxParallel);
-    await ProcessBatch(batch, downloadDirBase);
+    await ProcessBatch(batch, downloadDirectory);
   }
 }
