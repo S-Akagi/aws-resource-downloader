@@ -50,9 +50,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-
 
-      - name: Install dependencies
-        run: |
-            pnpm install
+      - uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 8.14.1
+      - run: pnpm install
 
       - name: Check Lint
         run: pnpm run lint:ci
