@@ -1,0 +1,47 @@
+name: バグ報告
+description: 改善のためのレポートを作成してください
+labels: 
+  - bug
+
+body:
+  - type: textarea
+    id: describe-bug
+    attributes:
+      label: バグ概要
+      description: |
+        ここにバグの概要を詳細に記述してください。(画像、ビデオ、gif なども添付可能です。)
+
+  - type: textarea
+    id: to-reproduce
+    attributes:
+      label: 再現方法
+      description: |
+        バグが発生する手順を記載してください.
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: 期待される動作
+      description: |
+        想定される正常な動作を説明してください.
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: ログ
+      description: バグ発生時のログがあれば直接添付してください。
+      render: Shell
+
+  - type: textarea
+    id: tasks
+    attributes:
+      label: タスク
+      description: |
+        必要なタスクを記載してください。
+        例:
+        ```
+        - [ ] コーディング
+        - [ ] コードレビュー
+        - [ ] ユニットテスト
+        - [ ] PR
+        ```

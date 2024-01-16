@@ -1,60 +1,88 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+# AWS Resource Downloader
+
 [README日本語版](https://github.com/SoichiAkagi/aws-resource-explorer/blob/main/README-jp.md)
 
-# AWS Config Service Resource Export Script
-
-This script is designed to export AWS Config Service resources using the AWS CLI. It provides a flexible way to select an AWS profile, region, and download directory for exporting resources in JSON format.
-
-## Prerequisites
-
-- AWS CLI installed and configured with the necessary profiles.
-- `jq` tool for JSON parsing.
-- Internet connectivity for fetching resource types documentation.
-
-## Usage
-
-### 1. Installation
-
-Clone the repository to your local machine:
-
-```bash
-git clone https://github.com/your-username/aws-config-export-script.git
-cd aws-config-export-script
-```
-
-### 2. Configuration
-
-Open the script and configure the following variables:
-
-- **AWS_REGION**: Set the default AWS region.
-- **DOWNLOAD_DIR**: Set the default download directory for exported JSON files.
-
-### 3. Run the Script
-
-Execute the script:
-
-```bash
-bash aws_config_export.sh
-```
-
-Follow the on-screen prompts to select an AWS profile, region, and provide a custom download directory if needed.
+AWS Resource Downloader is a command-line tool built with TypeScript and [ZX](https://github.com/google/zx) for downloading AWS resource information in JSON format.
 
 ## Features
 
-- Profile selection: Choose from available AWS CLI profiles.
-- Region selection: Dynamically fetches available regions for EC2.
-- Concurrent resource processing: Utilizes parallel processing for faster exports.
+- Download AWS resource information for specified resource types.
+- Supports parallel processing for faster execution.
+- Interactive prompts for selecting AWS profile, region, and download directory.
 
-## Notes
+## Prerequisites
 
-- The script uses the AWS CLI, `jq`, and `xargs` for efficient resource processing.
-- Ensure that the required AWS CLI profiles are properly configured.
+Before using AWS Resource Downloader, ensure that you have the following installed:
+
+- Node.js (20.5.1 or higher)
+- [PNPM](https://pnpm.io/) package manager (v8.14.1)
+- AWS CLI installed and configured with the necessary permissions
+- jq installed for processing JSON data ([jq Installation](https://stedolan.github.io/jq/download/))
+
+## Tools Used
+
+| Tool         | Version | Purpose                                    |
+| ------------ | ------- | ------------------------------------------ |
+| Node.js      | 20.5.1  | JavaScript runtime                         |
+| PNPM         | 8.14.1  | Package manager                            |
+| ZX           | 7.2.3   | Script execution and build tool            |
+| TypeScript   | ^5.3.3  | Superset of JavaScript                     |
+| ts-node      | 10.9.2  | Runtime for executing TypeScript code      |
+| @types/node  | ^20.11.2| Type definitions for Node.js               |
+| Prettier     | 3.2.2   | Code formatter                             |
+| ESLint       | (internal)| JavaScript and TypeScript static analyzer |
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/aws-resource-downloader.git
+   ```
+
+2. Change into the project directory:
+
+   ```bash
+   cd aws-resource-downloader
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   pnpm install
+   ```
+
+## Usage
+
+1. Run the application:
+
+   ```bash
+   pnpm start
+   ```
+
+2. Follow the prompts to select AWS profile, region, and specify the download directory.
+
+3. The application will fetch AWS resource information based on predefined resource types, and the results will be saved in JSON files.
+
+## Configuration
+
+- Modify the `maxParallel` variable in `main.ts` to control the number of resource types processed in parallel.
+- Update the predefined resource types in the `resources` variable in `main.ts` if needed.
+
+## Scripts
+
+- `pnpm test`: Execute tests (currently not implemented).
+- `pnpm run build`: Build the TypeScript code.
+- `pnpm start:prod`: Start the compiled application in production mode.
+- `pnpm run build:watch`: Build TypeScript code in watch mode.
+- `pnpm start`: Start the application in development mode.
+- `pnpm run lint`: Run ESLint with automatic fixing.
+- `pnpm run lint:ci`: Run ESLint for continuous integration.
+- `pnpm run format`: Format code using Prettier.
+- `pnpm run format:ci`: Check code formatting using Prettier.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-Remember to include a LICENSE file if you decide to use a specific license for your script. Adjust the content based on your preferences and additional information you want to provide.
